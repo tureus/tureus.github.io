@@ -1,0 +1,15 @@
+---
+layout: post
+title:  "RustCamp"
+date:   2015-08-12 14:44:03
+categories: jekyll update
+---
+Two weeks ago I was privileged to present my work on the graphite database system to RustCamp. It was a "camp" in spirit, meant primarily to stoke the flames of imagination. Rust is a new language, having come out of many iterations and course corrections. But now the language is stable, the stdlib is fairly rich, and the quality of third party library ("crates" for those in the know) is increasing.
+
+Many attendees were new to Rust, with most of their hands-on experience limited to tutorials and hacking in their freetime. There are few companies employing software developers to hack full time on rust software. There are a few but they have very particular reasons (and probably abnormal management).
+
+But Yehuda Katz made a great point: Rust is going to strip C++ gurus of some of their luster. Companies which need low-level systems software will be able to scale their teams. And that's what I'm seeing with my project, I have been able to make clear, concise code which is better structured and faster than what it aims to replace. Including an test and benchmark suite which piggy-backs on the standard tooling.
+
+And the great part about dedicated conferences which sell out: they lend great credibility to language communities. That credibility is already affecting the San Diego, CA Rust community. This past meetup we had more RSVPs than ever before and more attendees. The hype machine is spinning up and it's bringing in all kinds of developers.
+
+I have every intention of writing more services in Rust, leveraging the fine-grain memory control, safety, and great build tools to build awesome stuff.
