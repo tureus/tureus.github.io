@@ -11,9 +11,9 @@ The resources required to build an application can be many times more voluminous
 
 So what can we do to leverage containers for both development and deployment? I'll lay out a scheme that I have found in use on the heka project:
 
-  1) A development environment container, defined in the root of the project as "/Docker"
-  2) A build environment container, defined in "/docker/Docker"
-  3) A release container, defined in "/docker/Docker.final"
+  1. A development environment container, defined in the root of the project as "/Docker"
+  2. A build environment container, defined in "/docker/Docker"
+  3. A release container, defined in "/docker/Docker.final"
 
 The development environment has a lot of value, it lets contributors get right to modifying source code and running builds. The container specification will list out all the nitty gritty of what packages are required and it will also specify the recommended environment. So if the upstream author is comfortable with Debian they might as well specify "debian:jesse" and install all the required packages.
 
