@@ -13,7 +13,7 @@ Neither of these is a good option. Removing all remote files breaks callback sys
 
 The best pattern I have found is to compile the smaller config files in to a larger config file. This makes diffing/callbacks easy and free you from book keeping on which files are present on the remote system.
 
-Ansible has a useful module called (`assemble`)[http://docs.ansible.com/ansible/assemble_module.html] which concatenates static files in to one larger file. Which might get you pretty far but I need template evaluation.
+Ansible has a useful module called [`assemble`](http://docs.ansible.com/ansible/assemble_module.html) which concatenates static files in to one larger file. Which might get you pretty far but I need template evaluation.
 
 Getting an ansible run to evaluate templates and concatenate them is a bit of ansible gymnastics. Here's what you'll need:
 
@@ -23,16 +23,16 @@ Getting an ansible run to evaluate templates and concatenate them is a bit of an
 Your ansible role will be laid out as such:
 
 ```
-roles/logstash/
-├── tasks
-│   └── main.yml
-├── templates
-│   ├── 16-foo.conf.j2
-│   ├── 35-bar.conf.j2
-│   ├── 40-quuz.conf.j2
-│   └── logstash.conf.j2.noglob
-└── vars
-    └── main.yml
+    roles/logstash/
+    ├── tasks
+    │   └── main.yml
+    ├── templates
+    │   ├── 16-foo.conf.j2
+    │   ├── 35-bar.conf.j2
+    │   ├── 40-quuz.conf.j2
+    │   └── logstash.conf.j2.noglob
+    └── vars
+        └── main.yml
 ```
 
 It's important to put the number at the beginning of the filename. The glob tool lists the files in lexographical order and this way you'll always have a consistent rendering.
