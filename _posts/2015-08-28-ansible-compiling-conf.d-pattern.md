@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Ansible: conf.d compilation pattern"
-date:   2015-08-27 14:44:03
+date:   2015-08-28 12:05:03
 categories: devops
 ---
 
