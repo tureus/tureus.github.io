@@ -22,7 +22,7 @@ Getting an ansible run to evaluate templates and concatenate them is a bit of an
 
 Your ansible role will be laid out as such:
 
-```
+
     roles/logstash/
     ├── tasks
     │   └── main.yml
@@ -33,7 +33,7 @@ Your ansible role will be laid out as such:
     │   └── logstash.conf.j2.noglob
     └── vars
         └── main.yml
-```
+
 
 It's important to put the number at the beginning of the filename. The glob tool lists the files in lexographical order and this way you'll always have a consistent rendering.
 
