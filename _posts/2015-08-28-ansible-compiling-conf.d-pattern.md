@@ -38,15 +38,15 @@ It's important to put the number at the beginning of the filename. The glob tool
 The file `roles/logstash/templates/logstash.conf.j2.noglob` is the root template which iterates on the variable:
 
     {{ "{% for template_name in logstash_templates "}}%}
-        ### START PARTIAL {{ "{{ template_name" }} }} ###
+        ### START PARTIAL {{ "{{ template_name" }}   }} ###
         {{ "{{ lookup('template', template_name)" }} }}
         ### END PARTIAL ###
     {{ "{% endfor "}}%}
 
 The tricks here are `lookup('fileglob', $PATTERN, wantlist=True)` and `lookup('template', ...)`.
 
-`fileglob`: much like a shell script glob pattern, this lets you expand a path with wildcards. My biggest confusion was how to keep the code general, what path was the code being run from?
+`fileglob`: much like a shell script glob pattern, this lets you expand a path with wildcards. You must add `wantlist=True` so you can a python list back. My biggets concern with this templating code: how to keep it generalized and independent of location in the project's folder structure.
 
-Turns out "it depends". When `lookup('fileglob')` is run from a roles varfile it's relative to the roles files directory. When run inline from a roles template file it's relative to the playbook's folder. I put my playbooks in "ROOT/playbooks" so that's why I have to do "../roles". You might just need to do "roles/".
+It's not impossible but there are some got'chas. When `lookup('fileglob')` is run from a roles varfile it's relative to the roles files directory. When run inline from a roles template file it's relative to the playbook's folder. I put my playbooks in `$ROOT/playbooks` so that's why I have to do "../roles". If you're using a standard layout you'll just need `roles/`.
 
-`template`: evaluate a template at that point. Luckily the `fileglob` module provided a full path so there's no confusion about where to find the template. I use the `| basename` filter in the template so I can strip off my workstation's path but still know what file generate the content.
+`template`: evaluate a template at that point. Luckily the `fileglob` module provided a full path so there's no confusion about where to find the template. I use the `| basename` helper to strip off my workstation's local path but still know what file generated the content.
