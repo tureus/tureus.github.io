@@ -39,13 +39,11 @@ It's important to put the number at the beginning of the filename. The glob tool
 
 The file `roles/logstash/templates/logstash.conf.j2.noglob` is the root template which iterates on the variable:
 
-```
-{% for template_name in lookup('fileglob', '../roles/logstash-elasticsearch/templates/*.j2', wantlist=True) %}
-  ### START PARTIAL {{ template_name }} ###
-  {{ lookup('template', template_name) }}
-  ### END PARTIAL ###
-{% endfor %}
-```
+    {% for template_name in lookup('fileglob', '../roles/logstash-elasticsearch/templates/*.j2', wantlist=True) %}
+      ### START PARTIAL {{ template_name }} ###
+      {{ lookup('template', template_name) }}
+      ### END PARTIAL ###
+    {% endfor %}
 
 The tricks here are `lookup('fileglob', $PATTERN, wantlist=True)` and `lookup('template', ...)`.
 
