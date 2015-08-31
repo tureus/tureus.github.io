@@ -33,7 +33,7 @@ How did all these images get there? Turns out it's the default behavior. When yo
 
 You are leaving the container 'stopped' but still taking up memory. I'm sure the data is paged out on demand, but still, the artifacts are left behind.
 
-The recommended practice is to have one process per container, so add `--rm` to your run command.
+The recommended practice is to have one process per container, so add `--rm` to your run command if you know you won't be coming back to that process.
 
     docker run -it --rm xrlx/my_image bash
     # do some bash-y stuff in your image's environment
