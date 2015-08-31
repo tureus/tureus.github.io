@@ -73,6 +73,8 @@ When building images and you don't want to keep those intermediate images use th
 
 This is a very useful setting. You can test out `docker build` and if the build fails you have the intermediate images for fast runs. Don't edit the `RUN` stanzas of the more constly actions and you will automatically get them cached and ready to use in the future. When you finally get your `docker build` to complete you will benefit from the intermediate images being cleaned up.
 
+Edit: the `--rm` option is set to true by default (as noted in the documentation). I now realize those unnamed images are from failed, abandoned builds.
+
 Conclusion
 -----
 
