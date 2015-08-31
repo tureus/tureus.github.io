@@ -78,6 +78,6 @@ Edit: the `--rm` option is set to true by default (as noted in the documentation
 Conclusion
 -----
 
-So there you have it, Docker lets you iterate quickly on images and commands but it could leave considerable amounts of garbage behind. This is some low hanging fruit to keep your Docker host's environment as lean as possible. I would argue the `--rm` should be the default behavior when using `run` and `build` but I will keep working with Docker and see if there's a good reason for the default behavior.
+So there you have it, Docker lets you iterate quickly on images and commands but it could leave considerable amounts of garbage behind. This is some low hanging fruit to keep your Docker host's environment as lean as possible. I would argue the `--rm` should be the default behavior when using `run` but I will keep working with Docker and see if there's a good reason for the default behavior.
 
 ProTip: I wasn't going to start any of those stopped containers again. To clean them up: `docker ps -a | awk '{print $1}' | grep -v CONTAINER | xargs docker rm`
