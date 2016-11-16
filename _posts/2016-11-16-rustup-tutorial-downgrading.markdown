@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Rustup Tutorial: Downgrading Nightlies"
-date:   2015-08-12 14:44:03
+date:   2015-11-16 14:44:03
 categories: jekyll update
 ---
 
