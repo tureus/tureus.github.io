@@ -9,36 +9,34 @@ I hit an ICE (internal compiler exception -- a BUG in the compiler!) on the most
 
 So the first thing you do is check out the help of your tool:
 
-```
-LP-XLANGE-OSX:~ xlange$ rustup -h
-rustup 0.6.5 (88ef618 2016-11-04)
-The Rust toolchain installer
-
-USAGE:
-    rustup [FLAGS] [SUBCOMMAND]
-
-FLAGS:
-    -v, --verbose    Enable verbose output
-    -h, --help       Prints help information
-    -V, --version    Prints version information
-
-SUBCOMMANDS:
-    show           Show the active and installed toolchains
-    update         Update Rust toolchains
-    default        Set the default toolchain
-    toolchain      Modify or query the installed toolchains
-    target         Modify a toolchain's supported targets
-    component      Modify a toolchain's installed components
-    override       Modify directory toolchain overrides
-    run            Run a command with an environment configured for a given toolchain
-    which          Display which binary will be run for a given command
-    doc            Open the documentation for the current toolchain
-    man            View the man page for a given command
-    self           Modify the rustup installation
-    set            Alter rustup settings
-    completions    Generate completion scripts for your shell
-    help           Prints this message or the help of the given subcommand(s)
-```
+> LP-XLANGE-OSX:~ xlange$ rustup -h
+> rustup 0.6.5 (88ef618 2016-11-04)
+> The Rust toolchain installer
+> 
+> USAGE:
+>     rustup [FLAGS] [SUBCOMMAND]
+> 
+> FLAGS:
+>     -v, --verbose    Enable verbose output
+>     -h, --help       Prints help information
+>     -V, --version    Prints version information
+> 
+> SUBCOMMANDS:
+>     show           Show the active and installed toolchains
+>     update         Update Rust toolchains
+>     default        Set the default toolchain
+>     toolchain      Modify or query the installed toolchains
+>     target         Modify a toolchain's supported targets
+>     component      Modify a toolchain's installed components
+>     override       Modify directory toolchain overrides
+>     run            Run a command with an environment configured for a given toolchain
+>     which          Display which binary will be run for a given command
+>     doc            Open the documentation for the current toolchain
+>     man            View the man page for a given command
+>     self           Modify the rustup installation
+>     set            Alter rustup settings
+>     completions    Generate completion scripts for your shell
+>     help           Prints this message or the help of the given subcommand(s)
 
 Now usually I just do a quick `rustup update` and watch as the latest nightly and stdlib are downloaded and
 linked in to my environment. But today I have an unusuable nightly which crashes on due to some unstable
