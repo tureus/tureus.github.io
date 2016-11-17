@@ -5,9 +5,10 @@ date:   2015-11-16 14:44:03
 categories: jekyll update
 ---
 
-I hit an ICE (internal compiler exception -- a BUG in the compiler!) on the most recent nightly. Good thing I'm a rustup user and managing toolchains is well within reach. A downgrade is in order!
+Yesteray I was quietly hacking away on my code. A push to travis failed because the latest nightly crashed. The compiler crashed, not an unexpected event when living on the edge with nightly. Good thing I'm a rustup user and managing toolchains is well within reach. A downgrade is in order!
 
-So the first thing you do is check out the help of your tool:
+Now usually I just do a quick `rustup update` and watch as the latest nightly and stdlib are downloaded and
+linked in to my environment. Let's check out rustup's help:
 
     LP-XLANGE-OSX:~ xlange$ rustup -h
     rustup 0.6.5 (88ef618 2016-11-04)
@@ -39,9 +40,7 @@ So the first thing you do is check out the help of your tool:
         help           Prints this message or the help of the given subcommand(s)
 
 
-Now usually I just do a quick `rustup update` and watch as the latest nightly and stdlib are downloaded and
-linked in to my environment. But today I have an unusuable nightly which crashes on due to some unstable
-features. Unfortunately no top-level command screams `install` or even `download`. But digging a little further:
+Unfortunately no top-level command screams `install` or even `download`. But digging a little further:
 
     LP-XLANGE-OSX:~ xlange$ rustup toolchain --help
     rustup-toolchain
