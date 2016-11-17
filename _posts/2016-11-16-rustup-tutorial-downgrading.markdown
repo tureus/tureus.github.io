@@ -5,7 +5,7 @@ date:   2015-11-16 14:44:03
 categories: rust
 ---
 
-Yesteray I was quietly hacking away on my code. A push to travis failed because the latest nightly crashed. The compiler crashed, not an unexpected event when living on the edge with nightly. Good thing I'm a rustup user and managing toolchains is well within reach. A downgrade is in order!
+My travis build suffered a rust compiler crash: a dreaded ICE. That's just the cost of living on the edge. Good thing I'm a [rustup](https://rustup.rs/) user and managing toolchains is well within reach. A downgrade is in order!
 
 Now usually I just do a quick `rustup update` and watch as the latest nightly and stdlib are downloaded and
 linked in to my environment. Let's check out rustup's help:
@@ -91,10 +91,10 @@ Cool. So today is `2016-11-16` and the nightly isn't very good. How about I go b
     error: no release found for 'nightly-2016-11-13'
 
 Cue the music, we have a mystery. Turns out not all days contain nightlies! If **any** of the platform builds
-fails the whole nightly is called off and there is nothing to download. So how do you find a valid pattern?
+fails the whole nightly is called off and there is nothing to download. So how do you find a valid date?
 
 Enter [rusty dash's nightly build result tracker](http://rusty-dash.com/nightlies). Go here, look for a green
-build, and use that to specify your version!
+build, and use that to specify your version! The most recent green version I want is `2016-11-06`, installed like this:
 
     LP-XLANGE-OSX:~ xlange$ rustup toolchain install nightly-2016-11-06
     info: syncing channel updates for 'nightly-2016-11-06-x86_64-apple-darwin'
@@ -113,7 +113,7 @@ build, and use that to specify your version!
 
       nightly-2016-11-06-x86_64-apple-darwin installed - rustc 1.14.0-nightly (cae6ab1c4 2016-11-05)
 
-You can set this nightly as your default:
+Then you can set this nightly as your default:
 
     LP-XLANGE-OSX:~ xlange$ rustup default nightly-2016-11-06
     info: using existing install for 'nightly-2016-11-06-x86_64-apple-darwin'
