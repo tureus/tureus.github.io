@@ -2,7 +2,7 @@
 layout: post
 title:  "Rustup Tutorial: Downgrading Nightlies"
 date:   2015-11-16 14:44:03
-categories: jekyll update
+categories: rust
 ---
 
 Yesteray I was quietly hacking away on my code. A push to travis failed because the latest nightly crashed. The compiler crashed, not an unexpected event when living on the edge with nightly. Good thing I'm a rustup user and managing toolchains is well within reach. A downgrade is in order!
