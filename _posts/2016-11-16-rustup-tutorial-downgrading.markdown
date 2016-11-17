@@ -5,9 +5,9 @@ date:   2015-11-16 14:44:03
 categories: rust
 ---
 
-My travis build suffered a rust compiler crash: a dreaded ICE. That's just the cost of living on the edge. Good thing I'm a [rustup](https://rustup.rs/) user and managing toolchains is well within reach. A downgrade is in order!
+My travis build suffered a rust compiler crash: a dreaded ICE. That's the cost of living on the edge. Good thing I'm a [rustup](https://rustup.rs/) user -- a downgrade is in order!
 
-Now usually I just do a quick `rustup update` and watch as the latest nightly and stdlib are downloaded and
+My `rustup` interactions are usually limited to `update`, where the latest nightly and stdlib are downloaded and
 linked in to my environment. Let's check out rustup's help:
 
     LP-XLANGE-OSX:~ xlange$ rustup -h
