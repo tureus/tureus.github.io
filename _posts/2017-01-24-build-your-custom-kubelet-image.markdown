@@ -76,13 +76,55 @@ First big task, build the cross compile `hyperkube` for Linux from my OS X machi
 kubernetes$ bash build/run.sh make cross KUBE_FASTBUILD=true ARCH=amd64
 ```
 
-Without the `KUBE_FASTBUILD` you will cross compile a matrix of platforms and waste 45mins of your time. Should take 10-15 minutes when compiling for linux/amd64.
+Without the `KUBE_FASTBUILD` you will cross compile a matrix of platforms and waste 45mins of your time. Should take 10-15 minutes when compiling for linux/amd64. Note that `KUBE_FASTBUILD` is nowhere in the docs, I just trawled the `Makefile` scripts until hitting pay dirt.
 
-The second big task is to put the cross compiled Linux binary in to a docker image, ready for deployment:
+The second big task is to put the cross compiled binary in to a docker image:
 
 ```
 cd cluster/images/hyperkube/
-make VERSION=$YOURCOOLTAG ARCH=amd64
+hyperkube$ make VERSION=$YOURCOOLTAG ARCH=amd64
+# it downloads some base images, and creates your release image
+hyperkube$ docker images
+REPOSITORY                                   TAG                           IMAGE ID            CREATED             SIZE
+gcr.io/google_containers/hyperkube-amd64     $YOURCOOLTAG                  61fff5278a05        About an hour ago   577 MB
 ```
 
-The `hyperkube`
+As you can see, this script is used by the kubernetes release machinery to push out builds for each release tag. This leaves me satisfied because that's exactly what I wanted to replace with my custom build.
+
+I retag and push to my repo:
+
+```
+docker tag gcr.io/google_containers/hyperkube-amd64:$YOURCOOLTAG registry.xrl/hyperkube-amd64:$YOURCOOLTAG
+docker push registry.xrl/hyperkube-amd64:$YOURCOOLTAG
+```
+
+now the image is in a globally accessible place. How you deploy this custom image will vary greatly depending on your kubernetes deployment stack. I am a happy user of Kargo, the ansible-powered Kubernetes cluster manager: https://github.com/kubernetes-incubator/kargo .
+
+Kargo has a specific call out for Kubernetes images:
+
+```
+$ cat roles/download/defaults/main.yml
+# SNIP
+hyperkube_image_repo: "registry.usw1.viasat.cloud/hyperkube-amd64"
+hyperkube_image_tag: "master-custom"
+# SNIP
+```
+
+I can then run ansible as usual and kargo will swap out the images:
+
+```
+ansible-playbook -i inventory/inventory cluster.yml
+```
+
+Conclusion
+---
+
+Hope these build notes help you out. Go is a very hackable language with lots of great libraries. And Kubernetes is very active project, pulled in many directions, with a lot of great hackers working on it. But sometimes you have to roll up your sleeves.
+
+Further Reading
+---
+
+The documentation is lacking for this specific hackery, but here are some bits that got me going:
+
+ * https://github.com/kubernetes/community/blob/master/contributors/devel/godep.md
+ * https://github.com/kubernetes/kubernetes/blob/master/cluster/images/hyperkube/README.md
