@@ -105,7 +105,7 @@ Kargo has a specific call out for Kubernetes images:
 ```
 $ cat roles/download/defaults/main.yml
 # SNIP
-hyperkube_image_repo: "registry.usw1.viasat.cloud/hyperkube-amd64"
+hyperkube_image_repo: "registry.xrl/hyperkube-amd64:$YOURCOOLTAG"
 hyperkube_image_tag: "master-custom"
 # SNIP
 ```
